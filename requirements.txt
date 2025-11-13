@@ -1,0 +1,11 @@
+# 图像处理
+Pillow>=10.0.0
+
+# HTTP请求
+requests>=2.31.0
+
+# 加密库
+pycryptodome>=3.19.0
+
+# Web视图（用于验证码窗口）
+pywebview>=4.4.1
