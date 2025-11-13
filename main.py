@@ -278,8 +278,13 @@ class HeyTeaUploader:
         self.upload_frame = ttk.Frame(self.notebook)
         self.notebook.add(self.upload_frame, text="上传图片")
         
+        # 关于Tab
+        self.about_frame = ttk.Frame(self.notebook)
+        self.notebook.add(self.about_frame, text="关于")
+        
         self.create_login_tab()
         self.create_upload_tab()
+        self.create_about_tab()
     
     def create_login_tab(self):
         """创建登录Tab"""
@@ -376,6 +381,56 @@ class HeyTeaUploader:
         # 上传状态
         self.upload_status_label = ttk.Label(main_frame, text="")
         self.upload_status_label.pack(pady=(10, 0))
+    
+    def create_about_tab(self):
+        """创建关于Tab"""
+        main_frame = ttk.Frame(self.about_frame, padding="20")
+        main_frame.pack(fill='both', expand=True)
+        
+        # 标题
+        title_label = ttk.Label(main_frame, text="喜茶自定义杯贴上传工具", font=("", 18, "bold"))
+        title_label.pack(pady=(20, 10))
+        
+        # 版本信息
+        version_label = ttk.Label(main_frame, text="Version 1.0.0", font=("", 10))
+        version_label.pack(pady=(0, 20))
+        
+        # 描述
+        desc_label = ttk.Label(
+            main_frame, 
+            text="一个便捷的GUI工具，用于上传自定义杯贴图片到喜茶服务器",
+            font=("", 10),
+            wraplength=500,
+            justify='center'
+        )
+        desc_label.pack(pady=(0, 20))
+        
+        # GitHub链接
+        github_frame = ttk.Frame(main_frame)
+        github_frame.pack(pady=(10, 0))
+        
+        github_label = ttk.Label(github_frame, text="项目地址：", font=("", 10))
+        github_label.pack(side='left')
+        
+        github_link = ttk.Label(
+            github_frame, 
+            text="https://github.com/FuQuan233/HeyTea_AutoUpload",
+            font=("", 10),
+            foreground="blue",
+            cursor="hand2"
+        )
+        github_link.pack(side='left')
+        
+        # 绑定点击事件打开浏览器
+        def open_github(event):
+            import webbrowser
+            webbrowser.open("https://github.com/FuQuan233/HeyTea_AutoUpload")
+        
+        github_link.bind("<Button-1>", open_github)
+        
+        # 作者信息
+        author_label = ttk.Label(main_frame, text="© 2025 FuQuan233", font=("", 9), foreground="gray")
+        author_label.pack(pady=(20, 0))
     
     def get_verification_code(self):
         """获取验证码"""
